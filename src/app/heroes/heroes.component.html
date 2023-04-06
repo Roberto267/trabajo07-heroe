@@ -1,0 +1,29 @@
+<h2>My Heroes</h2>
+
+<div>
+  <label for="new-hero">Nombre del Heroe: </label>
+  
+  <input id="new-hero"  #heroName />
+  
+  <label>Puntos:
+    <input #heroPoint />
+  </label>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add" (click)="add(heroName.value, + heroPoint.value); heroName.value=''; heroPoint.value=''">
+    Agregar Heroe
+  </button>
+</div>
+<button (click)="ordenar()">Ordenar los puntos de mayor a menor</button>
+<ul class="heroes">
+    
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <button type="button" class="puntos">Puntos: {{hero.puntos}}</button>
+     
+    </a>
+    <button type="button" class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+  </li>
+</ul>
